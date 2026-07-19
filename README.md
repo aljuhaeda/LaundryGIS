@@ -1,47 +1,94 @@
-# LaundryGIS
+# LaundryGIS — WebGIS for Laundry Services near UIN Malang
 
-LaundryGIS is a web application designed to provide information about laundry services near University UIN Malang. The main highlight of this website is the implementation of a WebGIS system, utilizing QGIS, PostgreSQL, PostGIS, GeoServer, Mapstore, and a dedicated WebGIS Dashboard.
+A web-based Geographic Information System (WebGIS) that maps and lists laundry services around Universitas Islam Negeri (UIN) Maulana Malik Ibrahim Malang. Built with an open-source geospatial stack — QGIS, PostgreSQL/PostGIS, GeoServer, and Mapstore.
+
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![SCSS](https://img.shields.io/badge/Sass-CC6699?logo=sass&logoColor=white)](https://sass-lang.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+## Overview
+
+**Problem.** Students living near UIN Malang need a fast way to find and compare nearby laundry services — including location, service types, and contact info.
+
+**Solution.** A WebGIS application that visualizes laundry locations on an interactive map, backed by a spatial database and a serving layer built on the open-source geospatial toolchain.
 
 ## Features
 
-- **WebGIS Integration:** LaundryGIS incorporates a powerful WebGIS system that combines the capabilities of QGIS, PostgreSQL, PostGIS, GeoServer, Mapstore, and a user-friendly Dashboard.
+- **Interactive map** — pan, zoom, and click markers to view laundry details
+- **Category filtering** — filter by service type
+- **Data view** — tabular view of laundry services with location and contact
+- **Feature page** — description of app capabilities
+- **Team page** — contributors
 
-- **Laundry Information:** Discover a comprehensive list of laundry services near University UIN Malang, including details such as location, services offered, and contact information.
+## Tech Stack
 
-- **Interactive Maps:** The WebGIS system provides interactive maps for users to explore laundry locations visually.
+- **Frontend** — HTML5, SCSS/CSS, JavaScript
+- **Spatial data authoring** — QGIS (open-source desktop GIS)
+- **Spatial database** — PostgreSQL + PostGIS extension
+- **Map server** — GeoServer (serves WMS/WFS from PostGIS)
+- **Map client** — Mapstore for the dashboard
 
-## Technologies Used
+## Project Structure
 
-LaundryGIS leverages a stack of geospatial technologies to deliver a seamless and informative experience:
-
-- **QGIS:** A powerful open-source desktop GIS application for creating, editing, visualizing, and analyzing geospatial data.
-
-- **PostgreSQL:** A robust open-source relational database system.
-
-- **PostGIS:** An extension of PostgreSQL that adds support for geospatial objects.
-
-- **GeoServer:** An open-source server software that allows users to share and edit geospatial data.
-
-- **Mapstore:** A web mapping application that integrates with GeoServer to provide a user-friendly interface for interacting with geospatial data.
+```
+LaundryGIS/
+├── index.html         # Landing page
+├── peta.html          # Interactive map view
+├── kategori.html      # Category / filter view
+├── data.html          # Tabular data view
+├── feature.html       # Feature description page
+├── team.html          # Team page
+├── css/               # Compiled CSS
+├── scss/              # SCSS source
+├── js/                # Frontend logic
+├── lib/               # Third-party libraries
+├── img/               # Images and icons
+├── Additional Data/   # Supplementary geospatial data
+├── LICENSE
+└── README.md
+```
 
 ## Getting Started
 
-To get started with LaundryGIS, follow these steps:
+**1. Clone the repo**
 
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/aljuaheda/LaundryGIS.git
+```bash
+git clone https://github.com/aljuhaeda/LaundryGIS.git
+cd LaundryGIS
+```
 
-2. **Start your XAMPP or any PHP:**
-   - Start your Apache Manager and then change the directory to the folder clone.
+**2. Serve the frontend**
 
-   
-3. **Run the Website:**
-   - Run the index.html from that folder.
+The app is a static site — open `index.html` directly, or serve it with any local web server:
 
+```bash
+# Option A: Python
+python -m http.server 8000
 
-## Contributing
-We welcome contributions from the community. If you have suggestions, found a bug, or want to contribute to LaundryGIS, please follow our contribution guidelines.
+# Option B: PHP (matches the original XAMPP setup)
+php -S localhost:8000
+
+# Option C: Node
+npx http-server .
+```
+
+Then open `http://localhost:8000` in a browser.
+
+**3. (Optional) Backend spatial stack**
+
+For the full WebGIS experience, install the backend:
+
+- **PostgreSQL** with the **PostGIS** extension
+- **GeoServer** — connect to your PostGIS database and publish layers
+- **Mapstore** — connect to GeoServer for the dashboard
+
+Import the geospatial data (SHP / GeoJSON) from `Additional Data/` into PostGIS via QGIS or `shp2pgsql`.
 
 ## License
-LaundryGIS is licensed under the MIT License. 
+
+MIT. See [LICENSE](LICENSE).
+
+## Author
+
+**Zul Iflah Al Juhaeda** — [LinkedIn](https://linkedin.com/in/aljuhaeda) · [GitHub](https://github.com/aljuhaeda)
