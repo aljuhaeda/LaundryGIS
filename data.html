@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>BizConsult - Consulting HTML Template</title>
+    <title>LaundryUIN - Data GIS</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
@@ -37,18 +37,6 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-
-      iframe {
-        width: 100%;
-        height: 100vh; /* Tinggi 100% dari viewport height */
-        border: none;
-      }
-    </style>
   </head>
 
   <body>
@@ -137,9 +125,27 @@
           </p>
         </div>
         <!-- Embedded WebGIS -->
-        <iframe
-          src="http://localhost:8080/mapstore/dashboard-embedded.html#/55"
-        ></iframe>
+        <div class="mb-3">
+          <input
+            type="text"
+            id="laundry-search"
+            class="form-control"
+            placeholder="Cari nama atau alamat laundry..."
+          />
+        </div>
+        <div class="table-responsive mb-5">
+          <table class="table table-striped align-middle">
+            <thead>
+              <tr>
+                <th>Nama</th>
+                <th>Alamat</th>
+                <th class="text-end">Harga/kg</th>
+                <th class="text-end">Pengerjaan</th>
+              </tr>
+            </thead>
+            <tbody id="laundry-table-body"></tbody>
+          </table>
+        </div>
       </div>
       <!-- WebGIS Section End -->
 
@@ -266,5 +272,12 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <!-- Laundry Data Table -->
+    <script src="js/laundry-data.js"></script>
+    <script src="js/data-table.js"></script>
+    <script>
+      initLaundryTable("laundry-table-body", "laundry-search");
+    </script>
   </body>
 </html>
