@@ -41,3 +41,11 @@ Stable. Static site, no hosting requirement — runs directly from
 
 ## Next up
 - Nothing scheduled.
+
+## Verification log (continued)
+- 2026-07-28: fresh audit found the landing page (`index.html`) had the
+  same fabricated-testimonial pattern already fixed on `team.html` —
+  four fake customer quotes with invented names and stock photos,
+  presented as real reviews for a site with no actual customer base.
+  Section removed entirely, matching the honest-content precedent set
+  by the `team.html` fix.
