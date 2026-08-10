@@ -49,3 +49,6 @@ Stable. Static site, no hosting requirement — runs directly from
   presented as real reviews for a site with no actual customer base.
   Section removed entirely, matching the honest-content precedent set
   by the `team.html` fix.
+- 2026-07-31: removed a duplicate template `LICENSE.txt` and a stray
+  `READ-ME.txt` left over from the original template — the project has
+  its own `LICENSE` and `README.md`.
