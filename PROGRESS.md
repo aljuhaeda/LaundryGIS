@@ -1,8 +1,8 @@
 # LaundryGIS — Progress
 
 ## Status
-Stable. Static site, no hosting requirement — runs directly from
-`index.html` or any static host, no backend.
+Deployed, verified. Live: [laundrygis.pages.dev](https://laundrygis.pages.dev)
+(Cloudflare Pages, Git-integrated with `main` — pushes auto-redeploy).
 
 ## Done
 - Every page previously embedded a dead `localhost:8080` Mapstore
@@ -29,8 +29,6 @@ Stable. Static site, no hosting requirement — runs directly from
 ## Known issues / honest limitations
 - Static dataset — no live backend, so data updates require editing
   `js/laundry-data.js` / the source CSV directly, not a live re-crawl.
-- No hosted deployment (GitHub Pages, etc.) — must be opened locally or
-  self-hosted.
 
 ## Verification log
 - 2026-07-23: git working tree clean, no pending diff. `/security-review`
@@ -52,3 +50,8 @@ Stable. Static site, no hosting requirement — runs directly from
 - 2026-07-31: removed a duplicate template `LICENSE.txt` and a stray
   `READ-ME.txt` left over from the original template — the project has
   its own `LICENSE` and `README.md`.
+- 2026-08-15: deployed to Cloudflare Pages, Git-integrated (`main`
+  branch, no build step — static site served from repo root). Live at
+  [laundrygis.pages.dev](https://laundrygis.pages.dev). Verified: landing
+  page and `peta.html` (Leaflet map) both render correctly live, zero
+  console errors.
