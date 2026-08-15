@@ -1,8 +1,9 @@
 # LaundryGIS — Progress
 
 ## Status
-Deployed, verified. Live: [laundrygis.pages.dev](https://laundrygis.pages.dev)
-(Cloudflare Pages, Git-integrated with `main` — pushes auto-redeploy).
+Deployed, verified. Live: [laundrygis.aljuhaeda.com](https://laundrygis.aljuhaeda.com)
+(Cloudflare Pages, Git-integrated with `main` — pushes auto-redeploy;
+custom subdomain added 2026-08-15, `laundrygis.pages.dev` also works).
 
 ## Done
 - Every page previously embedded a dead `localhost:8080` Mapstore
@@ -54,4 +55,6 @@ Deployed, verified. Live: [laundrygis.pages.dev](https://laundrygis.pages.dev)
   branch, no build step — static site served from repo root). Live at
   [laundrygis.pages.dev](https://laundrygis.pages.dev). Verified: landing
   page and `peta.html` (Leaflet map) both render correctly live, zero
-  console errors.
+  console errors. Custom subdomain `laundrygis.aljuhaeda.com` added the
+  same day (CNAME to `laundrygis.pages.dev`, proxied through
+  Cloudflare) — verified live over HTTPS.
