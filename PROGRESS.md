@@ -25,7 +25,19 @@ custom subdomain added 2026-08-15, `laundrygis.pages.dev` also works).
   runs.
 
 ## In progress
-- Nothing currently active.
+- Landing-page rework committed (`c193f2f`), not yet pushed/deployed.
+  Full visual redesign of `index.html` only — warm-local direction
+  (cream + ink + clay, Bricolage Grotesque), self-contained
+  `css/home.css` + `js/home.js`, template libs (Bootstrap/jQuery/WOW/
+  AOS/Owl/Animate/FontAwesome) dropped from this page. Featured
+  laundries now generated from `LAUNDRY_DATA` (cheapest 3 / fastest 3).
+  Fabricated footer content (fake phone/email/socials, dead newsletter
+  form, nonexistent Privacy/Terms/Careers links) removed. Other 5 pages
+  untouched — still on the old template stylesheets, so a future pass
+  could roll this design system to them.
+- Not visually verified on a real mobile viewport (browser automation
+  was locked at 1920px); responsive CSS is conventional grid/flex
+  collapse + hamburger toggle.
 
 ## Known issues / honest limitations
 - Static dataset — no live backend, so data updates require editing
@@ -39,7 +51,11 @@ custom subdomain added 2026-08-15, `laundrygis.pages.dev` also works).
   live markers, full nav bar present and correct, no console errors.
 
 ## Next up
-- Nothing scheduled.
+- Push `main` to deploy the landing rework (Cloudflare Pages auto-build),
+  then verify the live URL — especially on a phone.
+- If the new design lands well: roll `css/home.css`'s system to
+  `peta.html` / `data.html` / `kategori.html` / `feature.html` /
+  `team.html` and retire the old template stylesheets + `lib/`.
 
 ## Verification log (continued)
 - 2026-07-28: fresh audit found the landing page (`index.html`) had the
