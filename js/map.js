@@ -1,7 +1,8 @@
-// Renders a Leaflet map of LAUNDRY_DATA into the given element id.
+// Renders a Leaflet map of LAUNDRY_DATA into the given element id. Depends on i18n.js (t).
 // Replaces the original iframe embed of a local (localhost-only) Mapstore
 // dashboard, which only ever worked on the original author's machine.
 function initLaundryMap(elementId) {
+  const T = window.t || ((k) => k);
   const uinMalang = [-7.9483, 112.6104];
   const map = L.map(elementId).setView(uinMalang, 14);
 
@@ -10,19 +11,25 @@ function initLaundryMap(elementId) {
     maxZoom: 19,
   }).addTo(map);
 
-  L.marker(uinMalang)
-    .addTo(map)
-    .bindPopup("<b>UIN Maulana Malik Ibrahim Malang</b>")
-    .openPopup();
+  const uinMarker = L.marker(uinMalang).addTo(map);
+  const laundryMarkers = LAUNDRY_DATA.map((l) => ({
+    marker: L.marker([l.lat, l.lng]).addTo(map),
+    data: l,
+  }));
 
-  LAUNDRY_DATA.forEach((laundry) => {
-    L.marker([laundry.lat, laundry.lng])
-      .addTo(map)
-      .bindPopup(
-        `<b>${laundry.name}</b><br>${laundry.address}<br>` +
-        `Rp${laundry.pricePerKg}rb/kg &middot; selesai ${laundry.turnaroundHours} jam`
+  function bindPopups() {
+    uinMarker.bindPopup("<b>" + T("js.uinPopup") + "</b>");
+    laundryMarkers.forEach(({ marker, data: l }) => {
+      marker.bindPopup(
+        "<b>" + l.name + "</b><br>" + l.address + "<br>" +
+        T("js.popupStats", { p: l.pricePerKg, h: l.turnaroundHours })
       );
-  });
+    });
+  }
+
+  bindPopups();
+  uinMarker.openPopup();
+  document.addEventListener("i18n:changed", bindPopups);
 
   return map;
 }

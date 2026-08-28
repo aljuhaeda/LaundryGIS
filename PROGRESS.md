@@ -23,21 +23,22 @@ custom subdomain added 2026-08-15, `laundrygis.pages.dev` also works).
   in the README for reference (legitimate heavier path for real-time
   layers or multi-user editing), clearly marked as not what currently
   runs.
+- 2026-08-28: warm-local visual system (`css/home.css`) rolled to **all 6
+  pages**. Every page dropped Bootstrap/jQuery/WOW/AOS/Owl/Animate/
+  FontAwesome/Bootstrap-Icons (~500KB); template stylesheets +
+  `lib/` + `js/main.js` deleted from the repo. Shared vanilla helpers:
+  `js/nav.js` (mobile menu), `js/theme.js` (light/dark), `js/i18n.js`
+  (ID⇄EN). Both toggles live in the nav on every page — theme follows
+  the OS setting by default, language defaults to ID, both persist to
+  `localStorage`; the table, dashboard cards, and map popups re-render
+  live on language switch. Browser-verified light+ID and dark+EN across
+  all pages, no console errors. `/security-review` run twice (no
+  findings — static site, only trusted `LAUNDRY_DATA` reaches the DOM).
 
 ## In progress
-- Landing-page rework committed (`c193f2f`), not yet pushed/deployed.
-  Full visual redesign of `index.html` only — warm-local direction
-  (cream + ink + clay, Bricolage Grotesque), self-contained
-  `css/home.css` + `js/home.js`, template libs (Bootstrap/jQuery/WOW/
-  AOS/Owl/Animate/FontAwesome) dropped from this page. Featured
-  laundries now generated from `LAUNDRY_DATA` (cheapest 3 / fastest 3).
-  Fabricated footer content (fake phone/email/socials, dead newsletter
-  form, nonexistent Privacy/Terms/Careers links) removed. Other 5 pages
-  untouched — still on the old template stylesheets, so a future pass
-  could roll this design system to them.
 - Not visually verified on a real mobile viewport (browser automation
   was locked at 1920px); responsive CSS is conventional grid/flex
-  collapse + hamburger toggle.
+  collapse + hamburger toggle (nav collapses at ≤860px now).
 
 ## Known issues / honest limitations
 - Static dataset — no live backend, so data updates require editing
@@ -51,11 +52,8 @@ custom subdomain added 2026-08-15, `laundrygis.pages.dev` also works).
   live markers, full nav bar present and correct, no console errors.
 
 ## Next up
-- Push `main` to deploy the landing rework (Cloudflare Pages auto-build),
-  then verify the live URL — especially on a phone.
-- If the new design lands well: roll `css/home.css`'s system to
-  `peta.html` / `data.html` / `kategori.html` / `feature.html` /
-  `team.html` and retire the old template stylesheets + `lib/`.
+- Verify the live deploy after this push (Cloudflare Pages auto-build) —
+  especially the two toggles and mobile layout on a real phone.
 
 ## Verification log (continued)
 - 2026-07-28: fresh audit found the landing page (`index.html`) had the

@@ -1,34 +1,47 @@
-// Renders LAUNDRY_DATA as a searchable table.
+// Renders LAUNDRY_DATA as a searchable table. Depends on i18n.js (t).
 // Replaces the original iframe embed of a local-only Mapstore dashboard.
 function initLaundryTable(tableBodyId, searchInputId) {
   const tbody = document.getElementById(tableBodyId);
+  const searchInput = document.getElementById(searchInputId);
+  const T = window.t || ((k) => k);
+  let query = "";
 
-  function render(data) {
+  function currentRows() {
+    if (!query) return LAUNDRY_DATA;
+    return LAUNDRY_DATA.filter(
+      (l) =>
+        l.name.toLowerCase().includes(query) ||
+        l.address.toLowerCase().includes(query)
+    );
+  }
+
+  function render() {
+    const data = currentRows();
+    if (!data.length) {
+      tbody.innerHTML = `<tr><td colspan="4" class="empty">${T("js.emptyTable")}</td></tr>`;
+      return;
+    }
     tbody.innerHTML = data
       .map(
         (l) => `
         <tr>
           <td>${l.name}</td>
           <td>${l.address}</td>
-          <td class="text-end">Rp${l.pricePerKg},000</td>
-          <td class="text-end">${l.turnaroundHours} jam</td>
+          <td class="num">${T("js.priceCol", { p: l.pricePerKg })}</td>
+          <td class="num">${T("js.hours", { h: l.turnaroundHours })}</td>
         </tr>`
       )
       .join("");
   }
 
-  render(LAUNDRY_DATA);
+  render();
 
-  const searchInput = document.getElementById(searchInputId);
   if (searchInput) {
     searchInput.addEventListener("input", () => {
-      const q = searchInput.value.trim().toLowerCase();
-      const filtered = LAUNDRY_DATA.filter(
-        (l) =>
-          l.name.toLowerCase().includes(q) ||
-          l.address.toLowerCase().includes(q)
-      );
-      render(filtered);
+      query = searchInput.value.trim().toLowerCase();
+      render();
     });
   }
+
+  document.addEventListener("i18n:changed", render);
 }

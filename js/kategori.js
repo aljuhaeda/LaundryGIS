@@ -1,5 +1,5 @@
 // Category dashboard: filters LAUNDRY_DATA by price tier and turnaround
-// speed (the two attributes actually present in the dataset).
+// speed (the two attributes actually present in the dataset). Depends on i18n.js (t).
 // Replaces the original iframe embed of a local-only Mapstore dashboard.
 function priceTier(pricePerKg) {
   if (pricePerKg <= 6) return "budget";
@@ -16,9 +16,10 @@ function initLaundryKategori(containerId, priceSelectId, speedSelectId, countId)
   const priceSelect = document.getElementById(priceSelectId);
   const speedSelect = document.getElementById(speedSelectId);
   const countEl = document.getElementById(countId);
+  const T = window.t || ((k) => k);
 
-  const tierLabel = { budget: "Budget (≤ Rp6rb/kg)", mid: "Menengah (Rp7–10rb/kg)", premium: "Premium (> Rp10rb/kg)" };
-  const speedLabel = { cepat: "Cepat (≤ 6 jam)", standar: "Standar (> 6 jam)" };
+  const priceKey = { budget: "kat.priceBudget", mid: "kat.priceMid", premium: "kat.pricePremium" };
+  const speedKey = { cepat: "kat.speedFast", standar: "kat.speedStd" };
 
   function render() {
     const priceFilter = priceSelect.value;
@@ -30,26 +31,30 @@ function initLaundryKategori(containerId, priceSelectId, speedSelectId, countId)
       return matchesPrice && matchesSpeed;
     });
 
-    countEl.textContent = `${filtered.length} laundry ditemukan`;
+    countEl.textContent = T("js.count", { n: filtered.length });
+
+    if (!filtered.length) {
+      container.innerHTML = `<p class="empty">${T("js.emptyKat")}</p>`;
+      return;
+    }
 
     container.innerHTML = filtered
       .map(
         (l) => `
-        <div class="col-lg-4 col-md-6 mb-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">${l.name}</h5>
-              <p class="card-text text-muted small">${l.address}</p>
-              <span class="badge bg-primary me-1">${tierLabel[priceTier(l.pricePerKg)]}</span>
-              <span class="badge bg-secondary">${speedLabel[speedTier(l.turnaroundHours)]}</span>
-            </div>
+        <article class="info-card">
+          <h3>${l.name}</h3>
+          <p class="info-card__addr">${l.address}</p>
+          <div class="info-card__badges">
+            <span class="badge badge--price">${T(priceKey[priceTier(l.pricePerKg)])}</span>
+            <span class="badge">${T(speedKey[speedTier(l.turnaroundHours)])}</span>
           </div>
-        </div>`
+        </article>`
       )
       .join("");
   }
 
   priceSelect.addEventListener("change", render);
   speedSelect.addEventListener("change", render);
+  document.addEventListener("i18n:changed", render);
   render();
 }

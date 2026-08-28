@@ -8,6 +8,18 @@
       name="description"
       content="Peta interaktif 28 layanan laundry di sekitar UIN Maulana Malik Ibrahim Malang, lengkap dengan harga per kilo dan waktu pengerjaan. Data hasil survei lapangan."
     />
+    <script>
+      (function () {
+        try {
+          var s = window.localStorage;
+          var th = s.getItem("theme");
+          if (th === "dark" || th === "light")
+            document.documentElement.dataset.theme = th;
+          var lg = s.getItem("lang");
+          if (lg === "en" || lg === "id") document.documentElement.lang = lg;
+        } catch (e) {}
+      })();
+    </script>
 
     <link href="img/favicon.ico" rel="icon" />
 
@@ -31,83 +43,104 @@
   <body>
     <header class="nav">
       <a href="index.html" class="nav__brand">LaundryUIN</a>
-      <button
-        class="nav__toggle"
-        type="button"
-        aria-label="Buka menu"
-        aria-expanded="false"
-      >
-        &#9776;
-      </button>
       <nav class="nav__links">
-        <a href="index.html" aria-current="page">Beranda</a>
-        <a href="peta.html">Peta GIS</a>
-        <a href="data.html">Data Laundry</a>
-        <a href="kategori.html">Dashboard</a>
-        <a href="feature.html">Fitur</a>
-        <a href="team.html">Tim</a>
-        <a href="peta.html" class="btn">Buka Peta</a>
+        <a href="index.html" aria-current="page" data-i18n="nav.home">Beranda</a>
+        <a href="peta.html" data-i18n="nav.map">Peta GIS</a>
+        <a href="data.html" data-i18n="nav.data">Data Laundry</a>
+        <a href="kategori.html" data-i18n="nav.dashboard">Dashboard</a>
+        <a href="feature.html" data-i18n="nav.features">Fitur</a>
+        <a href="team.html" data-i18n="nav.team">Tim</a>
+        <a href="peta.html" class="btn" data-i18n="nav.cta">Buka Peta</a>
       </nav>
+      <div class="nav__controls">
+        <button class="toggle-btn" id="lang-toggle" type="button">EN</button>
+        <button
+          class="toggle-btn"
+          id="theme-toggle"
+          type="button"
+          aria-label="Beralih ke tema gelap"
+        >
+          🌙
+        </button>
+        <button
+          class="nav__toggle"
+          type="button"
+          aria-label="Buka menu"
+          aria-expanded="false"
+          data-i18n-attr="aria-label:a11y.menu"
+        >
+          &#9776;
+        </button>
+      </div>
     </header>
 
     <main>
-      <!-- Hero -->
       <section class="hero wrap">
-        <p class="eyebrow">WebGIS &middot; UIN Maulana Malik Ibrahim Malang</p>
-        <h1 class="hero__title">
+        <p class="eyebrow" data-i18n="hero.eyebrow">
+          WebGIS &middot; UIN Maulana Malik Ibrahim Malang
+        </p>
+        <h1 class="hero__title" data-i18n="hero.title">
           Cari laundry terbaik di sekitar <em>UIN Malang</em>
         </h1>
-        <p class="hero__sub">
+        <p class="hero__sub" data-i18n="hero.sub">
           Peta interaktif 28 layanan laundry di sekitar kampus, lengkap dengan
           harga per kilo dan waktu pengerjaan. Data dari survei lapangan, bukan
           iklan.
         </p>
         <div class="hero__cta">
-          <a href="peta.html" class="btn">Buka Peta</a>
+          <a href="peta.html" class="btn" data-i18n="nav.cta">Buka Peta</a>
         </div>
-        <p class="hero__meta">
-          28 lokasi &nbsp;/&nbsp; Rp4&ndash;30rb per kg &nbsp;/&nbsp; selesai
-          2&ndash;24 jam &nbsp;/&nbsp; 10 kelurahan
+        <p class="hero__meta" data-i18n="hero.meta">
+          28 lokasi&nbsp;/&nbsp;Rp4&ndash;30rb per kg&nbsp;/&nbsp;selesai
+          2&ndash;24 jam&nbsp;/&nbsp;10 kelurahan
         </p>
       </section>
 
-      <!-- Metrics -->
       <section class="metrics">
         <div class="wrap metrics__grid">
           <div>
             <div class="metric__num">28</div>
-            <div class="metric__label">titik laundry terpetakan</div>
+            <div class="metric__label" data-i18n="metrics.n1label">
+              titik laundry terpetakan
+            </div>
           </div>
           <div>
-            <div class="metric__num">Rp4&ndash;30rb</div>
-            <div class="metric__label">kisaran harga per kg</div>
+            <div class="metric__num" data-i18n="metrics.v2">Rp4&ndash;30rb</div>
+            <div class="metric__label" data-i18n="metrics.n2label">
+              kisaran harga per kg
+            </div>
           </div>
           <div>
-            <div class="metric__num">2&ndash;24 jam</div>
-            <div class="metric__label">rentang waktu pengerjaan</div>
+            <div class="metric__num" data-i18n="metrics.v3">2&ndash;24 jam</div>
+            <div class="metric__label" data-i18n="metrics.n3label">
+              rentang waktu pengerjaan
+            </div>
           </div>
           <div>
             <div class="metric__num">10</div>
-            <div class="metric__label">kelurahan terjangkau</div>
+            <div class="metric__label" data-i18n="metrics.n4label">
+              kelurahan terjangkau
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- About -->
       <section class="wrap">
         <div class="about__grid">
           <div>
-            <p class="eyebrow">Tentang</p>
+            <p class="eyebrow" data-i18n="about.eyebrow">Tentang</p>
             <div class="section-head">
-              <h2>Portal informasi sebaran laundry di sekitar UIN Malang</h2>
+              <h2 data-i18n="about.h">
+                Portal informasi sebaran laundry di sekitar UIN Malang
+              </h2>
             </div>
-            <p>
+            <p data-i18n="about.p1">
               LaundryUIN memberikan gambaran menyeluruh tentang sebaran layanan
               laundry di sekitar kampus. Setiap titik pada peta berasal dari
               survei lapangan: nama, alamat, harga per kilo, dan perkiraan waktu
               pengerjaan.
             </p>
-            <p>
+            <p data-i18n="about.p2">
               Tujuannya sederhana: memudahkan mahasiswa membandingkan pilihan
               laundry terdekat tanpa harus keliling satu per satu.
             </p>
@@ -115,95 +148,109 @@
           <aside class="note-card">
             <dl>
               <div>
-                <dt>Sumber data</dt>
-                <dd>Survei lapangan (LaundryUIN.csv)</dd>
+                <dt data-i18n="about.dt1">Sumber data</dt>
+                <dd data-i18n="about.dd1">Survei lapangan (LaundryUIN.csv)</dd>
               </div>
               <div>
-                <dt>Cakupan</dt>
-                <dd>28 titik &middot; 10 kelurahan</dd>
+                <dt data-i18n="about.dt2">Cakupan</dt>
+                <dd data-i18n="about.dd2">28 titik &middot; 10 kelurahan</dd>
               </div>
               <div>
-                <dt>Peta</dt>
-                <dd>Leaflet + OpenStreetMap</dd>
+                <dt data-i18n="about.dt3">Peta</dt>
+                <dd data-i18n="about.dd3">Leaflet + OpenStreetMap</dd>
               </div>
               <div>
-                <dt>Backend</dt>
-                <dd>Tidak ada &mdash; berjalan penuh di browser</dd>
+                <dt data-i18n="about.dt4">Backend</dt>
+                <dd data-i18n="about.dd4">
+                  Tidak ada &mdash; berjalan penuh di browser
+                </dd>
               </div>
             </dl>
           </aside>
         </div>
       </section>
 
-      <!-- Map spotlight -->
       <section class="wrap map-spot">
         <div class="section-head">
-          <p class="eyebrow">Peta</p>
-          <h2>Semua 28 laundry dalam satu peta</h2>
+          <p class="eyebrow" data-i18n="map.eyebrow">Peta</p>
+          <h2 data-i18n="map.h">Semua 28 laundry dalam satu peta</h2>
         </div>
         <div id="laundry-map"></div>
       </section>
 
-      <!-- Featured -->
       <section class="wrap">
         <div class="section-head">
-          <p class="eyebrow">Pilihan</p>
-          <h2>Yang termurah dan tercepat</h2>
+          <p class="eyebrow" data-i18n="featured.eyebrow">Pilihan</p>
+          <h2 data-i18n="featured.h">Yang termurah dan tercepat</h2>
         </div>
         <div class="featured__cols">
           <div class="featured__col">
-            <h3>Paling murah <span>per kg</span></h3>
+            <h3>
+              <span data-i18n="featured.cheapH">Paling murah</span>
+              <span data-i18n="featured.cheapSpan">per kg</span>
+            </h3>
             <div id="featured-cheap"></div>
           </div>
           <div class="featured__col">
-            <h3>Paling cepat <span>selesai</span></h3>
+            <h3>
+              <span data-i18n="featured.fastH">Paling cepat</span>
+              <span data-i18n="featured.fastSpan">selesai</span>
+            </h3>
             <div id="featured-fast"></div>
           </div>
         </div>
       </section>
 
-      <!-- Explore -->
       <section class="wrap">
         <div class="section-head">
-          <p class="eyebrow">Jelajahi</p>
-          <h2>Tiga cara menemukan laundry-mu</h2>
+          <p class="eyebrow" data-i18n="explore.eyebrow">Jelajahi</p>
+          <h2 data-i18n="explore.h">Tiga cara menemukan laundry-mu</h2>
         </div>
         <div class="explore__grid">
           <a href="peta.html" class="explore-card">
             <div>
               <span class="explore-card__idx">01</span>
-              <h3>Peta GIS</h3>
+              <h3 data-i18n="explore.c1h">Peta GIS</h3>
             </div>
-            <p>
+            <p data-i18n="explore.c1p">
               Lihat sebaran seluruh laundry pada peta interaktif. Klik penanda
               untuk alamat, harga, dan waktu pengerjaan.
             </p>
-            <span class="explore-card__go">Buka peta &rarr;</span>
+            <span class="explore-card__go" data-i18n="explore.c1go"
+              >Buka peta &rarr;</span
+            >
           </a>
           <a href="data.html" class="explore-card">
             <span class="explore-card__idx">02</span>
-            <h3>Data Laundry</h3>
-            <p>Tabel lengkap yang bisa dicari dan diurutkan.</p>
-            <span class="explore-card__go">Lihat tabel &rarr;</span>
+            <h3 data-i18n="explore.c2h">Data Laundry</h3>
+            <p data-i18n="explore.c2p">
+              Tabel lengkap yang bisa dicari dan diurutkan.
+            </p>
+            <span class="explore-card__go" data-i18n="explore.c2go"
+              >Lihat tabel &rarr;</span
+            >
           </a>
           <a href="kategori.html" class="explore-card">
             <span class="explore-card__idx">03</span>
-            <h3>Dashboard</h3>
-            <p>Saring berdasarkan tingkat harga dan kecepatan layanan.</p>
-            <span class="explore-card__go">Buka dashboard &rarr;</span>
+            <h3 data-i18n="explore.c3h">Dashboard</h3>
+            <p data-i18n="explore.c3p">
+              Saring berdasarkan tingkat harga dan kecepatan layanan.
+            </p>
+            <span class="explore-card__go" data-i18n="explore.c3go"
+              >Buka dashboard &rarr;</span
+            >
           </a>
         </div>
       </section>
 
-      <!-- CTA -->
       <section class="cta-band">
         <div class="wrap">
-          <h2>Temukan laundry terdekat sekarang</h2>
-          <p>
+          <h2 data-i18n="cta.h">Temukan laundry terdekat sekarang</h2>
+          <p data-i18n="cta.p">
             Buka peta, cari yang paling dekat dari kos atau kampus, bandingkan
             harganya.
           </p>
-          <a href="peta.html" class="btn">Buka Peta</a>
+          <a href="peta.html" class="btn" data-i18n="nav.cta">Buka Peta</a>
         </div>
       </section>
     </main>
@@ -212,26 +259,23 @@
       <div class="footer__row">
         <span class="nav__brand">LaundryUIN</span>
         <nav class="footer__links">
-          <a href="peta.html">Peta GIS</a>
-          <a href="data.html">Data Laundry</a>
-          <a href="kategori.html">Dashboard</a>
-          <a href="feature.html">Fitur</a>
-          <a href="team.html">Tim</a>
+          <a href="peta.html" data-i18n="nav.map">Peta GIS</a>
+          <a href="data.html" data-i18n="nav.data">Data Laundry</a>
+          <a href="kategori.html" data-i18n="nav.dashboard">Dashboard</a>
+          <a href="feature.html" data-i18n="nav.features">Fitur</a>
+          <a href="team.html" data-i18n="nav.team">Tim</a>
         </nav>
       </div>
-      <p class="footer__fine">
+      <p class="footer__fine" data-i18n="foot.tagline">
         Proyek WebGIS untuk mata kuliah Sistem Informasi Geografis. Data 28
         layanan laundry dikumpulkan melalui survei lapangan di sekitar UIN
         Maulana Malik Ibrahim Malang. Peta oleh
         <a href="https://leafletjs.com/">Leaflet</a> &amp;
-        <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>.
-        &copy; <span id="year"></span> LaundryUIN.
+        <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>. &copy;
+        <span class="js-year"></span> LaundryUIN.
       </p>
     </footer>
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
     <script
       src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
@@ -239,6 +283,9 @@
     ></script>
     <script src="js/laundry-data.js"></script>
     <script src="js/map.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/nav.js"></script>
     <script src="js/home.js"></script>
   </body>
 </html>

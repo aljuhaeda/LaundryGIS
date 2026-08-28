@@ -1,360 +1,165 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="utf-8" />
-    <title>LaundryUIN - Fitur</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="" name="keywords" />
-    <meta content="" name="description" />
+    <title>Fitur — LaundryUIN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Apa yang ditawarkan LaundryUIN: 28 lokasi terpetakan, harga transparan, filter kecepatan pengerjaan, pencarian cepat, dan berjalan penuh di browser."
+    />
+    <script>
+      (function () {
+        try {
+          var s = window.localStorage;
+          var th = s.getItem("theme");
+          if (th === "dark" || th === "light")
+            document.documentElement.dataset.theme = th;
+          var lg = s.getItem("lang");
+          if (lg === "en" || lg === "id") document.documentElement.lang = lg;
+        } catch (e) {}
+      })();
+    </script>
 
-    <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon" />
 
-    <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Space+Grotesk:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Icon Font Stylesheet -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet" />
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/home.css" rel="stylesheet" />
   </head>
 
   <body>
-    <div class="container-xxl bg-white p-0">
-      <!-- Spinner Start -->
-      <div
-        id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
-      >
-        <div
-          class="spinner-border text-primary"
-          style="width: 3rem; height: 3rem"
-          role="status"
+    <header class="nav">
+      <a href="index.html" class="nav__brand">LaundryUIN</a>
+      <nav class="nav__links">
+        <a href="index.html" data-i18n="nav.home">Beranda</a>
+        <a href="peta.html" data-i18n="nav.map">Peta GIS</a>
+        <a href="data.html" data-i18n="nav.data">Data Laundry</a>
+        <a href="kategori.html" data-i18n="nav.dashboard">Dashboard</a>
+        <a href="feature.html" aria-current="page" data-i18n="nav.features">Fitur</a>
+        <a href="team.html" data-i18n="nav.team">Tim</a>
+        <a href="peta.html" class="btn" data-i18n="nav.cta">Buka Peta</a>
+      </nav>
+      <div class="nav__controls">
+        <button class="toggle-btn" id="lang-toggle" type="button">EN</button>
+        <button
+          class="toggle-btn"
+          id="theme-toggle"
+          type="button"
+          aria-label="Beralih ke tema gelap"
         >
-          <span class="sr-only">Loading...</span>
-        </div>
+          🌙
+        </button>
+        <button
+          class="nav__toggle"
+          type="button"
+          aria-label="Buka menu"
+          aria-expanded="false"
+          data-i18n-attr="aria-label:a11y.menu"
+        >
+          &#9776;
+        </button>
       </div>
-      <!-- Spinner End -->
+    </header>
 
-      <!-- Navbar & Hero Start -->
-      <div class="container-xxl position-relative p-0">
-        <nav
-          class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0"
-        >
-          <a href="index.html" class="navbar-brand p-0">
-            <h1 class="m-0">LaundryUIN</h1>
-            <!-- <img src="img/logo.png" alt="Logo"> -->
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-          >
-            <span class="fa fa-bars"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto py-0">
-              <a href="index.html" class="nav-item nav-link">Home</a>
-              <a href="peta.html" class="nav-item nav-link">Peta GIS</a>
-              <a href="data.html" class="nav-item nav-link">Data Laundry</a>
-              <a href="kategori.html" class="nav-item nav-link"
-                >Dashboard Laundry</a
-              >
-              <a href="feature.html" class="nav-item nav-link active">Fitur</a>
-              <a href="team.html" class="nav-item nav-link">Tim</a>
-            </div>
-            <a
-              href="peta.html"
-              class="btn btn-light rounded-pill text-primary py-2 px-4 ms-lg-5"
-              >Mulai Cari</a
-            >
-          </div>
+    <main>
+      <header class="page-hero wrap">
+        <p class="eyebrow" data-i18n="feat.eyebrow">Fitur</p>
+        <h1 data-i18n="feat.h1">Kenapa pakai LaundryUIN?</h1>
+        <p data-i18n="feat.lead">
+          Memetakan 28 layanan laundry nyata di sekitar UIN Malang &mdash;
+          alamat, harga per kilogram, dan estimasi waktu pengerjaan &mdash;
+          supaya mahasiswa bisa membandingkan pilihan sebelum berangkat, bukan
+          menebak-nebak. Semua berjalan langsung di browser tanpa server
+          tambahan.
+        </p>
+      </header>
+
+      <div class="wrap page-body">
+        <div class="card-grid">
+          <article class="info-card">
+            <span class="info-card__idx">01</span>
+            <h3 data-i18n="feat.c1h">28 lokasi terpetakan</h3>
+            <p data-i18n="feat.c1p">
+              Setiap lokasi dicatat dengan koordinat asli hasil survei di
+              sekitar UIN Malang.
+            </p>
+          </article>
+          <article class="info-card">
+            <span class="info-card__idx">02</span>
+            <h3 data-i18n="feat.c2h">Harga transparan</h3>
+            <p data-i18n="feat.c2p">
+              Harga per kilogram ditampilkan apa adanya, tanpa perlu
+              menghubungi tiap laundry satu per satu.
+            </p>
+          </article>
+          <article class="info-card">
+            <span class="info-card__idx">03</span>
+            <h3 data-i18n="feat.c3h">Filter kecepatan pengerjaan</h3>
+            <p data-i18n="feat.c3p">
+              Bandingkan laundry cepat (≤ 6 jam) dan standar (> 6 jam) langsung
+              dari dashboard.
+            </p>
+          </article>
+          <article class="info-card">
+            <span class="info-card__idx">04</span>
+            <h3 data-i18n="feat.c4h">Pencarian cepat</h3>
+            <p data-i18n="feat.c4p">
+              Cari berdasarkan nama atau alamat langsung dari tabel data
+              laundry.
+            </p>
+          </article>
+          <article class="info-card">
+            <span class="info-card__idx">05</span>
+            <h3 data-i18n="feat.c5h">Tanpa server tambahan</h3>
+            <p data-i18n="feat.c5p">
+              Peta dan dashboard berjalan langsung di browser, tidak butuh
+              instalasi backend untuk digunakan.
+            </p>
+          </article>
+          <article class="info-card">
+            <span class="info-card__idx">06</span>
+            <h3 data-i18n="feat.c6h">Proyek tugas GIS</h3>
+            <p data-i18n="feat.c6p">
+              Data spasial diolah dengan QGIS, lalu disederhanakan menjadi
+              aplikasi web mandiri.
+            </p>
+          </article>
+        </div>
+        <p style="margin-top: 2.5rem">
+          <a href="peta.html" class="btn" data-i18n="feat.btn">Lihat Peta</a>
+        </p>
+      </div>
+    </main>
+
+    <footer class="footer wrap">
+      <div class="footer__row">
+        <span class="nav__brand">LaundryUIN</span>
+        <nav class="footer__links">
+          <a href="peta.html" data-i18n="nav.map">Peta GIS</a>
+          <a href="data.html" data-i18n="nav.data">Data Laundry</a>
+          <a href="kategori.html" data-i18n="nav.dashboard">Dashboard</a>
+          <a href="feature.html" data-i18n="nav.features">Fitur</a>
+          <a href="team.html" data-i18n="nav.team">Tim</a>
         </nav>
-
-        <div class="container-xxl bg-primary page-header">
-          <div class="container text-center">
-            <h1 class="text-white animated zoomIn mb-3">Fitur</h1>
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item">
-                  <a class="text-white" href="index.html">Home</a>
-                </li>
-                <li
-                  class="breadcrumb-item text-white active"
-                  aria-current="page"
-                >
-                  Fitur
-                </li>
-              </ol>
-            </nav>
-          </div>
-        </div>
       </div>
-      <!-- Navbar & Hero End -->
+      <p class="footer__fine" data-i18n="foot.tagline">
+        Proyek WebGIS untuk mata kuliah Sistem Informasi Geografis. Data 28
+        layanan laundry dikumpulkan melalui survei lapangan di sekitar UIN
+        Maulana Malik Ibrahim Malang. Peta oleh
+        <a href="https://leafletjs.com/">Leaflet</a> &amp;
+        <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>. &copy;
+        <span class="js-year"></span> LaundryUIN.
+      </p>
+    </footer>
 
-      <!-- Features Start -->
-      <div class="container-xxl py-6">
-        <div class="container">
-          <div class="row g-5">
-            <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
-              <div
-                class="d-inline-block border rounded-pill text-primary px-4 mb-3"
-              >
-                Fitur
-              </div>
-              <h2 class="mb-4">
-                Kenapa Pakai LaundryUIN?
-              </h2>
-              <p>
-                LaundryUIN memetakan 28 layanan laundry nyata di sekitar UIN
-                Malang — lengkap dengan alamat, harga per kilogram, dan estimasi
-                waktu pengerjaan — sehingga mahasiswa bisa membandingkan pilihan
-                sebelum berangkat, bukan menebak-nebak.
-              </p>
-              <p>
-                Seluruh peta, tabel data, dan dashboard kategori berjalan
-                langsung di browser tanpa server tambahan, jadi selalu bisa
-                diakses kapan saja.
-              </p>
-              <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="peta.html"
-                >Lihat Peta</a
-              >
-            </div>
-            <div class="col-lg-7">
-              <div class="row g-5">
-                <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
-                  <div class="d-flex align-items-center mb-3">
-                    <div
-                      class="flex-shrink-0 btn-square bg-primary rounded-circle me-3"
-                    >
-                      <i class="fa fa-map-marker-alt text-white"></i>
-                    </div>
-                    <h6 class="mb-0">28 Lokasi Terpetakan</h6>
-                  </div>
-                  <span
-                    >Setiap lokasi dicatat dengan koordinat asli hasil
-                    survei di sekitar UIN Malang</span
-                  >
-                </div>
-                <div class="col-sm-6 wow fadeIn" data-wow-delay="0.2s">
-                  <div class="d-flex align-items-center mb-3">
-                    <div
-                      class="flex-shrink-0 btn-square bg-primary rounded-circle me-3"
-                    >
-                      <i class="fa fa-tags text-white"></i>
-                    </div>
-                    <h6 class="mb-0">Harga Transparan</h6>
-                  </div>
-                  <span
-                    >Harga per kilogram ditampilkan apa adanya, tanpa perlu
-                    menghubungi tiap laundry satu per satu</span
-                  >
-                </div>
-                <div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
-                  <div class="d-flex align-items-center mb-3">
-                    <div
-                      class="flex-shrink-0 btn-square bg-primary rounded-circle me-3"
-                    >
-                      <i class="fa fa-clock text-white"></i>
-                    </div>
-                    <h6 class="mb-0">Filter Kecepatan Pengerjaan</h6>
-                  </div>
-                  <span
-                    >Bandingkan laundry cepat (&le; 6 jam) dan standar (&gt;
-                    6 jam) langsung dari dashboard kategori</span
-                  >
-                </div>
-                <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
-                  <div class="d-flex align-items-center mb-3">
-                    <div
-                      class="flex-shrink-0 btn-square bg-primary rounded-circle me-3"
-                    >
-                      <i class="fa fa-search text-white"></i>
-                    </div>
-                    <h6 class="mb-0">Pencarian Cepat</h6>
-                  </div>
-                  <span
-                    >Cari berdasarkan nama atau alamat langsung dari tabel
-                    data laundry</span
-                  >
-                </div>
-                <div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
-                  <div class="d-flex align-items-center mb-3">
-                    <div
-                      class="flex-shrink-0 btn-square bg-primary rounded-circle me-3"
-                    >
-                      <i class="fa fa-bolt text-white"></i>
-                    </div>
-                    <h6 class="mb-0">Tanpa Server Tambahan</h6>
-                  </div>
-                  <span
-                    >Peta dan dashboard berjalan langsung di browser, tidak
-                    butuh instalasi backend untuk digunakan</span
-                  >
-                </div>
-                <div class="col-sm-6 wow fadeIn" data-wow-delay="0.6s">
-                  <div class="d-flex align-items-center mb-3">
-                    <div
-                      class="flex-shrink-0 btn-square bg-primary rounded-circle me-3"
-                    >
-                      <i class="fa fa-graduation-cap text-white"></i>
-                    </div>
-                    <h6 class="mb-0">Proyek Tugas Akhir GIS</h6>
-                  </div>
-                  <span
-                    >Dibangun dengan QGIS untuk pengolahan data spasial, lalu
-                    disederhanakan menjadi aplikasi web mandiri</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Features End -->
-
-      <!-- Footer Start -->
-      <div
-        class="container-fluid bg-dark text-light footer pt-5 wow fadeIn"
-        data-wow-delay="0.1s"
-        style="margin-top: 6rem"
-      >
-        <div class="container py-5">
-          <div class="row g-5">
-            <div class="col-md-6 col-lg-3">
-              <h5 class="text-white mb-4">Hubungi Kami</h5>
-              <p>
-                <i class="fa fa-map-marker-alt me-3"></i>Jalan Kampus UIN
-                Malang, Malang, Jawa Timur
-              </p>
-              <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-              <p><i class="fa fa-envelope me-3"></i>info@laundryuin.com</p>
-              <div class="d-flex pt-2">
-                <a class="btn btn-outline-light btn-social" href="#"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a class="btn btn-outline-light btn-social" href="#"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a class="btn btn-outline-light btn-social" href="#"
-                  ><i class="fab fa-youtube"></i
-                ></a>
-                <a class="btn btn-outline-light btn-social" href="#"
-                  ><i class="fab fa-instagram"></i
-                ></a>
-                <a class="btn btn-outline-light btn-social" href="#"
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <h5 class="text-white mb-4">Tautan Cepat</h5>
-              <a class="btn btn-link" href="#">Tentang Kami</a>
-              <a class="btn btn-link" href="#">Hubungi Kami</a>
-              <a class="btn btn-link" href="#">Kebijakan Privasi</a>
-              <a class="btn btn-link" href="#">Syarat & Ketentuan</a>
-              <a class="btn btn-link" href="#">Karir</a>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <h5 class="text-white mb-4">Tautan Populer</h5>
-              <a class="btn btn-link" href="#">Layanan Kami</a>
-              <a class="btn btn-link" href="#">Peta Laundry</a>
-              <a class="btn btn-link" href="#">Data Laundry</a>
-              <a class="btn btn-link" href="#">Kategori Laundry</a>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <h5 class="text-white mb-4">Newsletter</h5>
-              <p>
-                Dapatkan informasi terbaru tentang LaundryUIN. Berlangganan
-                newsletter kami.
-              </p>
-              <div class="position-relative w-100 mt-3">
-                <input
-                  class="form-control border-0 rounded-pill w-100 ps-4 pe-5"
-                  type="text"
-                  placeholder="Email Anda"
-                  style="height: 48px"
-                />
-                <button
-                  type="button"
-                  class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"
-                >
-                  <i class="fa fa-paper-plane text-primary fs-4"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="copyright">
-            <div class="row">
-              <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                &copy; <a class="border-bottom" href="#">LaundryUIN</a>, All
-                Right Reserved.
-
-                <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                Designed By
-                <a class="border-bottom" href="https://htmlcodex.com"
-                  >HTML Codex</a
-                >
-                <br />Distributed By:
-                <a
-                  class="border-bottom"
-                  href="https://themewagon.com"
-                  target="_blank"
-                  >ThemeWagon</a
-                >
-              </div>
-              <div class="col-md-6 text-center text-md-end">
-                <div class="footer-menu">
-                  <a href="">Home</a>
-                  <a href="">Cookies</a>
-                  <a href="">Help</a>
-                  <a href="">FQAs</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Footer End -->
-
-      <!-- Back to Top -->
-      <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
-        ><i class="bi bi-arrow-up"></i
-      ></a>
-    </div>
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/nav.js"></script>
   </body>
 </html>
