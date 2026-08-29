@@ -52,8 +52,8 @@ custom subdomain added 2026-08-15, `laundrygis.pages.dev` also works).
   live markers, full nav bar present and correct, no console errors.
 
 ## Next up
-- Verify the live deploy after this push (Cloudflare Pages auto-build) —
-  especially the two toggles and mobile layout on a real phone.
+- Mobile layout still not checked on a real phone (see "In progress").
+  Everything else is deployed and verified live.
 
 ## Verification log (continued)
 - 2026-07-28: fresh audit found the landing page (`index.html`) had the
@@ -72,3 +72,8 @@ custom subdomain added 2026-08-15, `laundrygis.pages.dev` also works).
   console errors. Custom subdomain `laundrygis.aljuhaeda.com` added the
   same day (CNAME to `laundrygis.pages.dev`, proxied through
   Cloudflare) — verified live over HTTPS.
+- 2026-08-29: staleness flag reviewed. The only commit after the last
+  PROGRESS update was "Delete unused template stylesheets, lib/ and
+  js/main.js" — already covered by the 2026-08-28 note above (line: "template
+  stylesheets + `lib/` + `js/main.js` deleted from the repo"). No functional
+  change unaccounted for.
