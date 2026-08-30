@@ -2,12 +2,14 @@
 
 A web-based Geographic Information System (WebGIS) that maps and lists laundry services around Universitas Islam Negeri (UIN) Maulana Malik Ibrahim Malang. Originally built on a QGIS/PostGIS/GeoServer/Mapstore stack for a GIS coursework project; now runs standalone in the browser (see **Note on the original backend** below).
 
+**Live:** [laundrygis.aljuhaeda.com](https://laundrygis.aljuhaeda.com) (Cloudflare Pages, auto-deployed from `main`; `laundrygis.pages.dev` also works).
+
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![SCSS](https://img.shields.io/badge/Sass-CC6699?logo=sass&logoColor=white)](https://sass-lang.com/)
 [![Leaflet](https://img.shields.io/badge/Leaflet-199900?logo=leaflet&logoColor=white)](https://leafletjs.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-![Screenshot: interactive map of laundry locations near UIN Malang](docs/peta-screenshot.png)
+[![Screenshot: interactive map of laundry locations near UIN Malang](docs/peta-screenshot.png)](https://laundrygis.aljuhaeda.com/peta.html)
 
 ## Overview
 
@@ -22,12 +24,14 @@ A web-based Geographic Information System (WebGIS) that maps and lists laundry s
 - **Category dashboard** (`kategori.html`) — filter by price tier (budget/menengah/premium) and turnaround speed (cepat/standar)
 - **Feature page** — description of app capabilities
 - **Team page** — contributors
+- **Light/dark theme and ID⇄EN language toggles** in the nav on every page — theme follows the OS setting, language defaults to ID, both persist to `localStorage`; the table, dashboard cards, and map popups re-render live on a language switch
 
 ## Tech Stack
 
-- **Frontend** — HTML5, SCSS/CSS, vanilla JavaScript
+- **Frontend** — HTML5, SCSS/CSS, vanilla JavaScript — no framework, no build step (Bootstrap/jQuery/AOS/etc. were stripped out, ~500KB removed)
 - **Map** — [Leaflet](https://leafletjs.com/) + OpenStreetMap tiles
 - **Data** — static JS array (`js/laundry-data.js`), sourced from `Additional Data/LaundryUIN.csv`
+- **Hosting** — Cloudflare Pages (static, Git-integrated)
 
 ## Project Structure
 
@@ -39,14 +43,17 @@ LaundryGIS/
 ├── data.html          # Searchable data table
 ├── feature.html       # Feature description page
 ├── team.html          # Team page
-├── css/               # Compiled CSS
+├── css/               # home.css — the whole design system, one file
 ├── scss/              # SCSS source
 ├── js/
 │   ├── laundry-data.js  # The 28 laundry records (name, address, price, turnaround, lat/lng)
 │   ├── map.js            # Leaflet map renderer
 │   ├── data-table.js     # Searchable table renderer
-│   └── kategori.js       # Price/speed filter dashboard renderer
-├── lib/                # Third-party libraries
+│   ├── kategori.js       # Price/speed filter dashboard renderer
+│   ├── home.js           # Landing-page map preview
+│   ├── nav.js            # Mobile menu toggle
+│   ├── theme.js          # Light/dark toggle
+│   └── i18n.js           # ID⇄EN language toggle
 ├── img/                # Images and icons
 ├── docs/               # README screenshot
 ├── Additional Data/    # Original crawled dataset (CSV) + use-case doc
