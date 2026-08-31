@@ -77,3 +77,8 @@ custom subdomain added 2026-08-15, `laundrygis.pages.dev` also works).
   js/main.js" — already covered by the 2026-08-28 note above (line: "template
   stylesheets + `lib/` + `js/main.js` deleted from the repo"). No functional
   change unaccounted for.
+- 2026-08-30: doc-only — README refreshed to match the warm-local redesign
+  (live Cloudflare Pages URL, theme/language toggles added to Features,
+  corrected project-structure tree), plus a re-captured `peta.html`
+  screenshot (light mode, for consistency with the other repos' READMEs).
+  No app code changed.
